@@ -1,44 +1,44 @@
-var button = document.getElementById("enter");
-var input = document.getElementById("userinput");
+const button = document.getElementById("enter");
+const input = document.getElementById("userinput");
 const ul = document.querySelector("ul");
 const li = document.getElementsByTagName("li");
 const deleteButton = document.getElementsByTagName("i");
-var clearButton = document.getElementById("clear");
+const clearButton = document.getElementById("clear");
 
-function strikeThrough(e) {
+strikeThrough = (e)=> {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("done");
     }
 }
 
-function createDeleteButtonIcon() {
-    for (var ind = 0; ind < li.length; ind++) {
-        var createDeleteButton = document.createElement("i");
-        var createDiv = document.getElementsByClassName("div");
+createDeleteButtonIcon = ()=> {
+    for (let ind = 0; ind < li.length; ind++) {
+        const createDeleteButton = document.createElement("i");
+        const createDiv = document.getElementsByClassName("div");
         console.log(createDiv);
         createDeleteButton.classList.add("fa", "fa-trash");
         createDiv[ind].appendChild(createDeleteButton);
     }
 }
 
-function deleteNodeOnClick(e) {
-    var trash = document.querySelectorAll("i");
-    for (var ind = 0; ind < trash.length; ind++) {
+deleteNodeOnClick = (e)=> {
+    const trash = document.querySelectorAll("i");
+    for (let ind = 0; ind < trash.length; ind++) {
         console.log(e);
         this.parentNode.parentNode.remove();
     }
 }
 
-function inputLength() {
+inputLength = ()=> {
     return input.value.length;
 }
 
-function createListElement() {
-    var divClassWrapper = document.createElement("div");
+createListElement = ()=> {
+    const divClassWrapper = document.createElement("div");
     divClassWrapper.classList.add("li-wrapper");
 
-    var li = document.createElement("li");
-    var createDiv = document.createElement("div");
+    const li = document.createElement("li");
+    const createDiv = document.createElement("div");
 
     li.appendChild(document.createTextNode(input.value));
     divClassWrapper.appendChild(li);
@@ -47,31 +47,31 @@ function createListElement() {
 
     input.value = "";
     createDiv.classList.add("div");
-    var createDeleteButton = document.createElement("i");
+    const createDeleteButton = document.createElement("i");
     createDeleteButton.classList.add("fa", "fa-trash");
     createDiv.appendChild(createDeleteButton);
     deleteParentNodeOnClick();
 }
 
-function addListAfterClick() {
+addListAfterClick = ()=> {
     if (inputLength() > 0) {
         createListElement();
     }
 }
 
-function addListAfterKeypress(event) {
+addListAfterKeypress = (event)=> {
     if (inputLength() > 0 && event.keyCode === 13) {
         createListElement();
     }
 }
 
-function deleteParentNodeOnClick() {
-    for (var i = 0; i < deleteButton.length; i++) {
+deleteParentNodeOnClick = ()=> {
+    for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i].addEventListener("click", deleteNodeOnClick);
     }
 }
 
-function clearList() {
+clearList = ()=> {
     ul.innerHTML = "";
 }
 
